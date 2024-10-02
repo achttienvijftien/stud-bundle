@@ -1,0 +1,21 @@
+{
+  "name": "achttienvijftien/stud-bundle",
+  "authors": [
+    {
+      "name": "1815",
+      "email": "it@1815.nl",
+      "homepage": "https://www.1815.nl"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "achttienvijftien/service-container": "dev-main",
+    "achttienvijftien/stud": "dev-main",
+    "": "^6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AchttienVijftien\\Bundle\\StudBundle\\": "src"
+    }
+  }
+}

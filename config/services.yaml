@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  AchttienVijftien\Stud\:
+    resource: '../../stud/src/*'
+    exclude: '../../stud/src/Structure/Registrar/*'
+
+  AchttienVijftien\Stud\Boot:
+    arguments:
+      - !tagged_iterator stud.bootable
+
+  AchttienVijftien\Stud\Hook\Hook:
+    arguments:
+      - !tagged_iterator stud.hookable
