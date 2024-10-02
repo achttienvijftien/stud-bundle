@@ -11,7 +11,7 @@
     "php": "^8.2",
     "achttienvijftien/service-container": "dev-main",
     "achttienvijftien/stud": "dev-main",
-    "symfony/console": "^6.4"
+    "symfony/yaml": "^6.4"
   },
   "autoload": {
     "psr-4": {
