@@ -3,7 +3,7 @@
 namespace AchttienVijftien\Bundle\StudBundle;
 
 use AchttienVijftien\Bundle\StudBundle\Compiler\RegistrableTypePass;
-use AchttienVijftien\Stud\Boot;
+use AchttienVijftien\Stud\Boot\Boot;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;

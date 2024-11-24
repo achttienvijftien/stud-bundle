@@ -4,14 +4,20 @@ services:
     autowire: true
     autoconfigure: true
 
-  AchttienVijftien\Stud\:
-    resource: '../../stud/src/*'
-    exclude: '../../stud/src/Structure/Registrar/*'
+  AchttienVijftien\Stud\Boot\:
+    resource: '../../stud/src/Boot'
 
-  AchttienVijftien\Stud\Boot:
+  AchttienVijftien\Stud\Boot\Boot:
     arguments:
       - !tagged_iterator stud.bootable
+
+  AchttienVijftien\Stud\Hook\:
+    resource: '../../stud/src/Hook'
 
   AchttienVijftien\Stud\Hook\Hook:
     arguments:
       - !tagged_iterator stud.hookable
+
+  AchttienVijftien\Stud\Structure\:
+    resource: '../../stud/src/Structure'
+    exclude: '../../stud/src/Structure/Registrar/*'
