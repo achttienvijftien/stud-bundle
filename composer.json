@@ -9,8 +9,8 @@
   ],
   "require": {
     "php": "^8.2",
-    "achttienvijftien/service-container": "dev-main",
-    "achttienvijftien/stud": "dev-main",
+    "achttienvijftien/service-container": "^1.1",
+    "achttienvijftien/stud": "^0.1.0",
     "symfony/yaml": "^6.4"
   },
   "autoload": {
