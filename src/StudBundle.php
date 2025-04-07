@@ -2,8 +2,12 @@
 
 namespace AchttienVijftien\Bundle\StudBundle;
 
+use AchttienVijftien\Bundle\StudBundle\Compiler\FireHooksPass;
 use AchttienVijftien\Bundle\StudBundle\Compiler\RegistrableTypePass;
-use AchttienVijftien\Stud\Boot\Boot;
+use AchttienVijftien\Stud\Fire\Attribute\OnHook;
+use AchttienVijftien\Stud\Fire\FireHooks;
+use AchttienVijftien\Stud\Fire\HookIterator;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -25,10 +29,26 @@ class StudBundle extends AbstractBundle {
 		$container->import( '../config/services.yaml' );
 	}
 
+	/**
+	 * Builds bundle.
+	 *
+	 * @param ContainerBuilder $container The container builder.
+	 *
+	 * @return void
+	 */
 	public function build( ContainerBuilder $container ): void {
 		parent::build( $container );
 
 		$container->addCompilerPass( new RegistrableTypePass() );
+
+		$container->registerAttributeForAutoconfiguration(
+			OnHook::class,
+			static function ( ChildDefinition $definition, OnHook $attribute, \ReflectionClass $reflector ): void {
+				$definition->addTag( 'stud.fire_hook', $attribute->to_array() );
+			}
+		);
+
+		$container->addCompilerPass( new FireHooksPass() );
 	}
 
 	/**
@@ -37,6 +57,7 @@ class StudBundle extends AbstractBundle {
 	 * @return void
 	 */
 	public function boot(): void {
-		$this->container->get( Boot::class );
+		$hooks = $this->container->get( FireHooks::class );
+		$hooks->add_hooks();
 	}
 }
