@@ -1,22 +1,18 @@
 services:
   _defaults:
-    public: true
+    public: false
     autowire: true
     autoconfigure: true
 
-  AchttienVijftien\Stud\Boot\:
-    resource: '../../stud/src/Boot'
+  AchttienVijftien\Stud\Fire\:
+    resource: '../../stud/src/Fire'
+    autowire: false
 
-  AchttienVijftien\Stud\Boot\Boot:
-    arguments:
-      - !tagged_iterator stud.bootable
+  AchttienVijftien\Stud\Fire\FireHooks:
+    public: true
 
   AchttienVijftien\Stud\Hook\:
     resource: '../../stud/src/Hook'
-
-  AchttienVijftien\Stud\Hook\Hook:
-    arguments:
-      - !tagged_iterator stud.hookable
 
   AchttienVijftien\Stud\Structure\:
     resource: '../../stud/src/Structure'
