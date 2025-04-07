@@ -67,11 +67,13 @@ class FireHooksPass implements CompilerPassInterface {
 	}
 
 	/**
-	 * @param $id
+	 * Gets reference of service.
+	 *
+	 * @param string $id The id of the service.
 	 *
 	 * @return Reference
 	 */
-	private function get_reference( $id ): Reference {
+	private function get_reference( string $id ): Reference {
 		if ( ! isset( $this->references[ $id ] ) ) {
 			$this->references[ $id ] = new Reference( $id );
 		}
